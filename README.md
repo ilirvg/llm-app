@@ -11,49 +11,66 @@ A Node.js application that uses LangChain and the Groq API to create a chat inte
 - Express.js backend
 - Environment variables for configuration
 
+## Using This Repository as a Template
+
+This repository is set up to be used as a template for creating new LLM applications:
+
+1. On GitHub, visit the repository page
+2. Click the "Use this template" button at the top
+3. Select "Create a new repository"
+4. Give your new repository a name and description
+5. Click "Create repository from template"
+
+When you use this template:
+- You'll get a new repository with all the code from this template
+- It will have its own fresh Git history (no previous commits)
+- You can customize it to build your own LLM application
+
 ## Prerequisites
 
 - Node.js (v14 or later recommended)
-- A Groq API key
+- A Groq API key (sign up at https://console.groq.com)
+- LangSmith API key for tracing (sign up at https://smith.langchain.com)
 
-## Installation
+## Getting Started
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/ilirvg/llm-app.git
-   cd llm-app
-   ```
-
-2. Install dependencies:
+1. **Install dependencies**:
    ```
    npm install
    ```
 
-3. Create a `.env` file in the root directory with the following content:
+2. **Set up environment variables**:
+   Create a `.env` file in the root directory with:
    ```
+   # Groq API settings
    GROQ_API_KEY=your_groq_api_key_here
+   
+   # LangSmith settings (for tracing and debugging)
+   LANGSMITH_TRACING=true
+   LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+   LANGSMITH_API_KEY=your_langsmith_api_key_here
+   LANGSMITH_PROJECT=your_project_name
+   
+   # Server settings
    PORT=3001
    ```
-   Replace `your_groq_api_key_here` with your actual Groq API key.
+   Replace the placeholder values with your actual API keys.
 
-## Running the App
+3. **Start the application**:
+   ```
+   npm start    # Standard mode
+   npm run dev  # Development mode with auto-restart
+   ```
 
-### Standard Mode
-```
-npm start
-```
-
-### Development Mode (with auto-restart)
-```
-npm run dev
-```
+4. **Open in browser**:
+   Navigate to `http://localhost:3001` in your browser
 
 ## Usage
 
-1. Start the server using one of the commands above
-2. Open your browser and navigate to `http://localhost:3001`
-3. Type your question in the input field and press "Ask" or hit Enter
-4. The response from the Llama 3 model will appear in the chat window
+Once the app is running:
+1. Type your question in the input field 
+2. Press "Ask" or hit Enter
+3. The response from the Llama 3 model will appear in the chat window
 
 ## LangChain Integration
 
@@ -72,11 +89,11 @@ The app follows a simple chain flow: Prompt → Model → Output Parser
 - `public/index.html` - Frontend web interface
 - `.env` - Environment variables (not included in the repository)
 
-## Environment Variables
+## Customization
 
-- `GROQ_API_KEY`: Your Groq API key (required)
-- `PORT`: The port the server runs on (defaults to 3001)
+You can easily customize this application:
 
-## License
-
-ISC 
+- Change the model or provider in `server.js` 
+- Modify the prompt templates to adjust responses
+- Update the web interface in `public/index.html`
+- Add new LangChain components for more advanced use cases
