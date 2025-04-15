@@ -1,10 +1,11 @@
 # LLM Chat App
 
-A simple Node.js application that uses the Groq API to create a chat interface with the Llama 3 (8B) model.
+A Node.js application that uses LangChain and the Groq API to create a chat interface with the Llama 3 (8B) model.
 
 ## Features
 
 - Interactive chat interface to talk with Llama 3 AI model
+- Leverages LangChain for prompt engineering and chain composition
 - Uses Groq API for fast, efficient AI responses
 - Simple, clean web UI
 - Express.js backend
@@ -54,9 +55,20 @@ npm run dev
 3. Type your question in the input field and press "Ask" or hit Enter
 4. The response from the Llama 3 model will appear in the chat window
 
+## LangChain Integration
+
+This app uses several LangChain components:
+- `ChatPromptTemplate` for composing prompts
+- `SystemMessagePromptTemplate` and `HumanMessagePromptTemplate` for role-based prompts
+- `RunnableSequence` for chaining components together
+- `StringOutputParser` for processing model responses
+- `ChatGroq` for interacting with Groq's API
+
+The app follows a simple chain flow: Prompt → Model → Output Parser
+
 ## Project Structure
 
-- `server.js` - Main application server and API endpoints
+- `server.js` - Main application server with LangChain integration
 - `public/index.html` - Frontend web interface
 - `.env` - Environment variables (not included in the repository)
 

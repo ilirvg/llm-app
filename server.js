@@ -4,8 +4,13 @@ require('dotenv').config();
 // Import dependencies
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
 const path = require('path');
+
+// Import LangChain components
+const { ChatGroq } = require('@langchain/groq');
+const { StringOutputParser } = require('@langchain/core/output_parsers');
+const { ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate } = require('@langchain/core/prompts');
+const { RunnableSequence } = require('@langchain/core/runnables');
 
 // Initialize Express app
 const app = express();
@@ -16,6 +21,33 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Initialize the Groq chat model with LangChain
+const model = new ChatGroq({
+  apiKey: process.env.GROQ_API_KEY,
+  model: 'llama3-8b-8192',
+  temperature: 0.7,
+  maxTokens: 1024,
+});
+
+// Create prompt templates
+const systemPrompt = SystemMessagePromptTemplate.fromTemplate(
+  'You are a helpful AI assistant that provides informative and thoughtful answers.'
+);
+
+const humanPrompt = HumanMessagePromptTemplate.fromTemplate('{question}');
+
+const chatPrompt = ChatPromptTemplate.fromMessages([
+  systemPrompt,
+  humanPrompt
+]);
+
+// Create a chain (prompt -> model -> output parser)
+const chain = RunnableSequence.from([
+  chatPrompt,
+  model,
+  new StringOutputParser()
+]);
 
 // Simple health check endpoint
 app.get('/health', (req, res) => {
@@ -29,7 +61,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// API endpoint for questions
+// API endpoint for questions using LangChain
 app.post('/api/ask', async (req, res) => {
   console.log('Received POST request to /api/ask');
   console.log('Request body:', req.body);
@@ -43,31 +75,12 @@ app.post('/api/ask', async (req, res) => {
     }
     
     console.log(`Received question: ${question}`);
-    console.log(`Using API Key: ${process.env.GROQ_API_KEY ? 'API key is set' : 'API key is missing'}`);
+    console.log(`Using Groq API with LangChain`);
     
-    // Call Groq API directly
-    const response = await axios.post(
-      'https://api.groq.com/openai/v1/chat/completions',
-      {
-        model: 'llama3-8b-8192',
-        messages: [
-          { role: 'system', content: 'You are a helpful AI assistant.' },
-          { role: 'user', content: question }
-        ],
-        temperature: 0.7,
-        max_tokens: 1024
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
+    // Use the LangChain chain to get a response
+    const answer = await chain.invoke({ question });
     
-    // Extract the answer from the response
-    const answer = response.data.choices[0].message.content;
-    console.log('Successfully received answer from Groq API');
+    console.log('Successfully received answer from LangChain chain');
     
     res.json({ answer });
   } catch (error) {
