@@ -1,5 +1,6 @@
 {
   "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",
@@ -22,8 +23,7 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@design-system/*": ["../design-system/src/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

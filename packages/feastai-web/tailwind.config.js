@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "../design-system/src/**/*.{js,ts,jsx,tsx}",
-  ],
-  plugins: [require("tailwindcss-animate")],
+
+import animate from "tailwindcss-animate";
+import { theme } from "./src/lib/theme";
+
+const config = {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class", ".dark"],
+  theme,
+  plugins: [animate],
 };
+
+export default config;
