@@ -2,12 +2,12 @@
   "name": "cipher-bytes",
   "private": true,
   "scripts": {
-    "dev:chat": "pnpm --filter @llm-chat/chat-service dev",
-    "start:chat": "pnpm --filter @llm-chat/chat-service start",
-    "dev:design-system": "pnpm --filter @llm-chat/design-system dev",
-    "build:design-system": "pnpm --filter @llm-chat/design-system build",
-    "dev:feastai-web": "pnpm --filter @llm-chat/feastai-web dev",
-    "dev:feastai-mobile": "pnpm --filter @llm-chat/feastai-mobile start",
-    "build:feastai-web": "pnpm --filter @llm-chat/feastai-web build"
+    "dev:chat": "pnpm --filter @cipher-bytes/chat-service dev",
+    "start:chat": "pnpm --filter @cipher-bytes/chat-service start",
+    "dev:design-system": "pnpm --filter @cipher-bytes/design-system dev",
+    "build:design-system": "pnpm --filter @cipher-bytes/design-system build",
+    "dev:feastai-web": "pnpm --filter @cipher-bytes/feastai-web dev",
+    "dev:feastai-mobile": "pnpm --filter @cipher-bytes/feastai-mobile start",
+    "build:feastai-web": "pnpm --filter @cipher-bytes/feastai-web build"
   }
 }
