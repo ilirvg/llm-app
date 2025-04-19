@@ -1,5 +1,5 @@
 {
-  "name": "llm-chat-monorepo",
+  "name": "cipher-bytes",
   "private": true,
   "scripts": {
     "dev:chat": "pnpm --filter @llm-chat/chat-service dev",

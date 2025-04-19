@@ -1,5 +1,5 @@
 {
-  "name": "@llm-chat/feastai-mobile",
+  "name": "@cipher-bytes/feastai-mobile",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,8 @@
     "ios": "expo start --ios"
   },
   "dependencies": {
-    "@llm-chat/design-system": "workspace:*",
-    "@llm-chat/feast-shared": "workspace:*",
+    "@cipher-bytes/design-system": "workspace:*",
+    "@cipher-bytes/feast-shared": "workspace:*",
     "expo": "^50.0.0",
     "react": "^18.2.0",
     "react-native": "0.73.4"
