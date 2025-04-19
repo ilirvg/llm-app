@@ -1,0 +1,22 @@
+{
+  "name": "@llm-chat/feastai-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios"
+  },
+  "dependencies": {
+    "@llm-chat/design-system": "workspace:*",
+    "@llm-chat/feast-shared": "workspace:*",
+    "expo": "^50.0.0",
+    "react": "^18.2.0",
+    "react-native": "0.73.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-native": "^0.73.0",
+    "typescript": "^5.0.0"
+  }
+}

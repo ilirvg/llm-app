@@ -1,4 +1,4 @@
-# LLM Chat App Monorepo
+# LLM Chat App
 
 A Node.js application that uses LangChain and the Groq API to create a chat interface with the Llama 3 (8B) model.
 

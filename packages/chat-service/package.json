@@ -1,0 +1,23 @@
+{
+  "name": "@llm-chat/chat-service",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.44",
+    "@langchain/groq": "^0.2.2",
+    "axios": "^1.8.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.3",
+    "langsmith": "^0.3.16",
+    "@llm-chat/design-system": "workspace:*"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

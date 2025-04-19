@@ -1,5 +1,6 @@
 # Dependency directories
 node_modules/
+packages/*/node_modules
 
 # Environment variables
 .env
@@ -33,4 +34,8 @@ coverage
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db 
+Thumbs.db
+
+# New directories
+dist
+build 
